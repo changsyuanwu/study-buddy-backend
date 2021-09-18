@@ -8,7 +8,7 @@ const Firestore = require('@google-cloud/firestore');
 
 const db = new Firestore({
   projectId: 'voiceflow-htn2021',
-  keyFilename: 'C:\\Users\\anzec\\Documents\\Programming\\express-firebase\\voiceflow-htn2021-95d830e0cc6d.json',
+  keyFilename: '.\\voiceflow-htn2021-95d830e0cc6d.json',
 });
 
 var indexRouter = require('./routes/index');

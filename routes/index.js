@@ -6,10 +6,11 @@ router.get("/", function (req, res, next) {
   res.send("Hello from App Engine!");
 });
 
+/* GET question set given a category */
 router.get("/getQuestions/:category", async function(req, res, next) {
   const db = req.db;
   const category = req.params.category.toLowerCase();
-  console.log(category);
+  console.log(category);  // debugging tool
 
   let questions = [];
 
@@ -20,6 +21,19 @@ router.get("/getQuestions/:category", async function(req, res, next) {
   });
 
   res.json(questions);
+});
+
+router.post("/postQuestion", async function(req, res, next) {
+  const db = req.db;
+  const category = req.query.category.toLowerCase();
+  const keyword = req.query.keyword.toLowerCase();
+  const prompt = req.query.prompt.toLowerCase();
+
+  const docRef = db.collection(category).doc();
+  await docRef.set({
+    keyword: keyword,
+    prompt: prompt
+  });
 });
 
 module.exports = router;
