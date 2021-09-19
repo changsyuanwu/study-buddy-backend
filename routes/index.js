@@ -25,9 +25,9 @@ router.get("/getQuestions/:category", async function(req, res, next) {
 
 router.post("/postQuestion", async function(req, res, next) {
   const db = req.db;
-  const category = req.query.category.toLowerCase();
-  const keyword = req.query.keyword.toLowerCase();
-  const prompt = req.query.prompt.toLowerCase();
+  const category = req.body.category.toLowerCase();
+  const keyword = req.body.keyword.toLowerCase();
+  const prompt = req.body.prompt.toLowerCase();
 
   const docRef = db.collection(category).doc();
   await docRef.set({
