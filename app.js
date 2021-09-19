@@ -3,13 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const path = require('path');
+var path2 = require('path');
 
 const Firestore = require('@google-cloud/firestore');
 
 const db = new Firestore({
   projectId: 'voiceflow-htn2021',
-  keyFilename: path.join('.', 'voiceflow-htn2021-95d830e0cc6d.json'),
+  keyFilename: path2.join('.', 'voiceflow-htn2021-95d830e0cc6d.json'),
 });
 
 var indexRouter = require('./routes/index');
