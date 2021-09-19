@@ -3,7 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.send("Hello from App Engine!");
+  res.json({
+    data: {
+      message: "Hello from App Engine!"
+    }
+  });
 });
 
 /* GET question set given a category */
