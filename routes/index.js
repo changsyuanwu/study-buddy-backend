@@ -10,8 +10,16 @@ router.get("/", function (req, res, next) {
   });
 });
 
+router.get("/listCategories", async function (req, res, next) {
+  const db = req.db;
+
+  const snapshot = await db.listCollections();
+
+  res.json(snapshot);
+});
+
 /* GET question set given a category */
-router.get("/getQuestions/:category", async function(req, res, next) {
+router.get("/getQuestions/:category", async function (req, res, next) {
   const db = req.db;
   const category = req.params.category.toLowerCase();
   console.log(category);  // debugging tool
@@ -27,7 +35,7 @@ router.get("/getQuestions/:category", async function(req, res, next) {
   res.json(questions);
 });
 
-router.post("/postQuestion", async function(req, res, next) {
+router.post("/postQuestion", async function (req, res, next) {
   const db = req.db;
   const category = req.body.category.toLowerCase();
   const keyword = req.body.keyword.toLowerCase();
@@ -38,6 +46,10 @@ router.post("/postQuestion", async function(req, res, next) {
     keyword: keyword,
     prompt: prompt
   });
+
+  res.json({
+    message: "success"
+  })
 });
 
 module.exports = router;
