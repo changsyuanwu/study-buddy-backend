@@ -10,4 +10,34 @@ router.get("/", function (req, res, next) {
   });
 });
 
+/* GET question set given a category */
+router.get("/getQuestions/:category", async function(req, res, next) {
+  const db = req.db;
+  const category = req.params.category.toLowerCase();
+  console.log(category);  // debugging tool
+
+  let questions = [];
+
+  const snapshot = await db.collection(category).get();
+  snapshot.forEach((doc) => {
+    console.log(doc.id, '=>', doc.data());  // debugging tool
+    questions.push(doc.data());
+  });
+
+  res.json(questions);
+});
+
+router.post("/postQuestion", async function(req, res, next) {
+  const db = req.db;
+  const category = req.query.category.toLowerCase();
+  const keyword = req.query.keyword.toLowerCase();
+  const prompt = req.query.prompt.toLowerCase();
+
+  const docRef = db.collection(category).doc();
+  await docRef.set({
+    keyword: keyword,
+    prompt: prompt
+  });
+});
+
 module.exports = router;
