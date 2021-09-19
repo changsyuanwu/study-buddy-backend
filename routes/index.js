@@ -12,10 +12,15 @@ router.get("/", function (req, res, next) {
 
 router.get("/listCategories", async function (req, res, next) {
   const db = req.db;
+  let questions = [];
 
   const snapshot = await db.listCollections();
+  snapshot.forEach((doc) => {
+    console.log(doc.id);  // debugging tool
+    questions.push(doc.id);
+  });
 
-  res.json(snapshot);
+  res.json(questions);
 });
 
 /* GET question set given a category */
