@@ -1,6 +1,10 @@
 # Study Buddy Express Backend
 
-Hack the North 2021
+Created for Hack the North 2021
+
+Wraps around Google Cloud Platform's Firebase API and allows us to manipulate the results.
+
+Checkout the full project here: https://devpost.com/software/study-buddy-dw4ykf
 
 GET /listCategories
 - Lists all created categories
