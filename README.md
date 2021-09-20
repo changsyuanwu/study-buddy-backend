@@ -2,7 +2,7 @@
 
 Created for Hack the North 2021
 
-Wraps around Google Cloud Platform's Firebase API and allows us to manipulate the results.
+Wraps around Google Cloud Platform's Firebase API and allows us to manipulate the responses for our own endpoints.
 
 Check out the full project here: https://devpost.com/software/study-buddy-dw4ykf
 
